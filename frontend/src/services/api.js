@@ -3,7 +3,7 @@
  * Centralized Frontend API Client (src/services/api.js)
  */
 
-const API_BASE = '/api';
+const API_BASE = 'https://ai-business-opportunity-finder-project-production.up.railway.app/api';
 
 async function request(endpoint, options = {}) {
   const url = `${API_BASE}${endpoint}`;
