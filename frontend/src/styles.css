@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark Theme Default Tokens (Slate SaaS Palette) */
+  --bg-app: #0f172a;
+  --bg-card: #1e293b;
+  --bg-subtle: #0f172a;
+  --bg-muted: #334155;
+  --border-color: #334155;
+  --border-hover: #475569;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --color-primary: #60a5fa;
+  --color-primary-solid: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-secondary: #475569;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.28), 0 1px 2px -1px rgba(0, 0, 0, 0.24);
+  --card-shadow-hover: 0 4px 12px -2px rgba(0, 0, 0, 0.36), 0 2px 4px -2px rgba(0, 0, 0, 0.24);
+  --font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body.light-mode {
+  /* Light Theme Tokens (Clean SaaS Slate & White Palette) */
+  --bg-app: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-muted: #e2e8f0;
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --color-primary: #2563eb;
+  --color-primary-solid: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-secondary: #475569;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --card-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --card-shadow-hover: 0 4px 12px -2px rgba(15, 23, 42, 0.08), 0 2px 6px -2px rgba(15, 23, 42, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-app);
+  background-image: none;
+  color: var(--text-primary);
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Clean SaaS Card Surface */
+.glass-panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.glass-panel-hover {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.glass-panel-hover:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Subtle SaaS Sub-Surface */
+.saas-subtle-box {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #64748b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ==========================================================================
+   LIGHT MODE ADAPTATION FOR TAILWIND SLATE UTILITIES
+   ========================================================================== */
+body.light-mode header {
+  background-color: #ffffff !important;
+  border-bottom-color: #e2e8f0 !important;
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04) !important;
+}
+
+body.light-mode [class*="bg-slate-950"],
+body.light-mode [class*="bg-slate-900"],
+body.light-mode [class*="bg-[#0F172A]"] {
+  background-color: #f8fafc !important;
+}
+
+body.light-mode [class*="bg-slate-800"] {
+  background-color: #f1f5f9 !important;
+}
+
+body.light-mode [class*="border-slate-800"],
+body.light-mode [class*="border-slate-700"] {
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode [class*="divide-slate-800"] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode .text-white {
+  color: #0f172a !important;
+}
+
+/* Preserve white text on solid primary, success, warning, and danger buttons/badges */
+body.light-mode .btn-primary-text,
+body.light-mode [class*="bg-blue-600"].text-white,
+body.light-mode [class*="bg-blue-600"] .text-white,
+body.light-mode [class*="bg-blue-700"].text-white,
+body.light-mode [class*="bg-emerald-600"].text-white,
+body.light-mode [class*="bg-emerald-600"] .text-white,
+body.light-mode [class*="bg-teal-600"].text-white,
+body.light-mode [class*="bg-teal-600"] .text-white,
+body.light-mode [class*="bg-amber-600"].text-white,
+body.light-mode [class*="bg-amber-600"] .text-white,
+body.light-mode [class*="bg-amber-500"].text-white,
+body.light-mode [class*="bg-amber-500"] .text-white,
+body.light-mode [class*="bg-rose-600"].text-white,
+body.light-mode [class*="bg-red-600"].text-white,
+body.light-mode [class*="bg-indigo-600"].text-white,
+body.light-mode [class*="bg-indigo-600"] .text-white,
+body.light-mode [class*="bg-slate-600"].text-white,
+body.light-mode [class*="bg-slate-600"] .text-white,
+body.light-mode [class*="bg-slate-700"].text-white,
+body.light-mode [class*="bg-slate-700"] .text-white,
+body.light-mode [class*="bg-slate-900"].btn-keep-dark {
+  color: #ffffff !important;
+}
+
+body.light-mode .text-slate-100,
+body.light-mode .text-slate-200 {
+  color: #0f172a !important;
+}
+
+body.light-mode .text-slate-300 {
+  color: #334155 !important;
+}
+
+body.light-mode .text-slate-400,
+body.light-mode .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Semantic Accent Readability in Light Mode */
+body.light-mode .text-blue-300,
+body.light-mode .text-blue-400,
+body.light-mode .text-cyan-300,
+body.light-mode .text-cyan-400 {
+  color: #2563eb !important;
+}
+
+body.light-mode .text-emerald-200,
+body.light-mode .text-emerald-300,
+body.light-mode .text-emerald-400 {
+  color: #16a34a !important;
+}
+
+body.light-mode .text-amber-200,
+body.light-mode .text-amber-300,
+body.light-mode .text-amber-400 {
+  color: #d97706 !important;
+}
+
+body.light-mode .text-rose-200,
+body.light-mode .text-rose-300,
+body.light-mode .text-rose-400 {
+  color: #dc2626 !important;
+}
+
+body.light-mode .text-violet-200,
+body.light-mode .text-violet-300,
+body.light-mode .text-violet-400,
+body.light-mode .text-indigo-300,
+body.light-mode .text-indigo-400 {
+  color: #4f46e5 !important;
+}
+
+/* Light Mode Form Controls */
+body.light-mode input,
+body.light-mode select,
+body.light-mode textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode input:focus,
+body.light-mode select:focus,
+body.light-mode textarea:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+}
+
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Print-Friendly Report Styling */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .glass-panel {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: none !important;
+    color: #0f172a !important;
+    break-inside: avoid;
+  }
+}
